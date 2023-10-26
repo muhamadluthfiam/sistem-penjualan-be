@@ -22,4 +22,10 @@ export default class Customer extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  static search () {
+    return [
+      'name'
+    ]
+  }
 }

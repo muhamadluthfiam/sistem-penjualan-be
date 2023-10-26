@@ -18,4 +18,10 @@ export default class Role extends BaseModel {
 
   @hasOne(() => User)
   public user: HasOne<typeof User>
+
+  static search () {
+    return [
+      'name'
+    ]
+  }
 }

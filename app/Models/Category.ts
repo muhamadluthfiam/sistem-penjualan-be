@@ -6,7 +6,6 @@ export default class Category extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-
   @column()
   public name: string
 
@@ -18,4 +17,10 @@ export default class Category extends BaseModel {
 
   @hasMany(() => Product)
   public product: HasMany<typeof Product>
+
+  static search () {
+    return [
+      'name'
+    ]
+  }
 }

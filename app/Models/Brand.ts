@@ -18,4 +18,10 @@ export default class Brand extends BaseModel {
 
   @hasMany(() => Product)
   public product: HasMany<typeof Product>
+
+  static search () {
+    return [
+      'name'
+    ]
+  }
 }

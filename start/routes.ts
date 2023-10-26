@@ -25,10 +25,36 @@ Route.group(() => {
   Route.post('/auth/register', 'AuthController.register')
   Route.post('/auth/login', 'AuthController.login')
   
+  Route.get('/products', 'ProductsController.index').middleware('auth')
   Route.get('/products/:id','ProductsController.show')
   Route.put('/products/:id','ProductsController.update')
   Route.delete('/products/:id', 'ProductsController.destroy')
-  
-  Route.get('/products', 'ProductsController.index').middleware('auth')
   Route.post('/products', 'ProductsController.store')
+
+  Route.get('/brands', 'BrandsController.index')
+  Route.get('/brands/:id','BrandsController.show')
+  Route.put('/brands/:id','BrandsController.update')
+  Route.delete('/brands/:id', 'BrandsController.destroy')
+  Route.post('/brands', 'BrandsController.store')
+  
+  Route.get('/customer', 'CustomersController.index')
+  Route.get('/customer/:id','CustomersController.show')
+  Route.put('/customer/:id','CustomersController.update')
+  Route.delete('/customer/:id', 'CustomersController.destroy')
+  Route.post('/customer', 'CustomersController.store')
+  
+  Route.get('/supplier', 'SuppliersController.index')
+  Route.get('/supplier/:id','SuppliersController.show')
+  Route.put('/supplier/:id','SuppliersController.update')
+  Route.delete('/supplier/:id', 'SuppliersController.destroy')
+  Route.post('/supplier', 'SuppliersController.store')
+  
+  Route.get('/unit', 'UnitsController.index')
+  Route.get('/unit/:id','UnitsController.show')
+  Route.put('/unit/:id','UnitsController.update')
+  Route.delete('/unit/:id', 'UnitsController.destroy')
+  Route.post('/unit', 'UnitsController.store')
+
+
+
 }).prefix('/api')
