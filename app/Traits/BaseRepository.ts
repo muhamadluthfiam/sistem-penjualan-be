@@ -1,5 +1,4 @@
 import { Exception } from "@adonisjs/core/build/standalone";
-import { BaseModel } from "@ioc:Adonis/Lucid/Orm";
 
 class BaseRepository {
   public model: any
@@ -20,6 +19,14 @@ class BaseRepository {
     relations.forEach(relation => {
       query.preload(relation);
     });
+
+    return query.paginate(page, perPage)
+  }
+
+  public async paginateNotRelations(payload) {
+    const perPage = parseInt(payload.perPage) || 10
+    const page = parseInt(payload.page) || 1
+    const query = this.model.query()
 
     return query.paginate(page, perPage)
   }
@@ -46,7 +53,7 @@ class BaseRepository {
           })
           return data
         }
-        data = await this.paginate(payload, relations)
+        data = relations ? await this.paginate(payload, relations) : await this.paginateNotRelations(payload)
         return data
       }
     } catch (error) {
