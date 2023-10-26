@@ -20,6 +20,8 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.get('/products', 'ProductsController.index')
+Route.get('/products/:id','ProductsController.show')
+Route.put('/products/:id','ProductsController.update')
+Route.post('/products', 'ProductsController.store')
+Route.delete('/products/:id', 'ProductsController.destroy')

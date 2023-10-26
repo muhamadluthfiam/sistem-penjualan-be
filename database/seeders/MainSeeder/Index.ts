@@ -17,5 +17,6 @@ export default class extends BaseSeeder {
     await this.runSeeder(await import('../BrandsSeeder'))
     await this.runSeeder(await import('../ProductsSeeder'))
     await this.runSeeder(await import('../CustomerSeeder'))
+    await this.runSeeder(await import('../SupplierSeeder'))
   }
 }

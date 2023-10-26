@@ -49,4 +49,11 @@ export default class Product extends BaseModel {
 
   @belongsTo(() => Brand)
   public brand: BelongsTo<typeof Brand>
+
+  static search () {
+    return [
+      // Product.$getColumn('name')
+      'name'
+    ]
+  }
 }
