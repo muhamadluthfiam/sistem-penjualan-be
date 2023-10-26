@@ -20,8 +20,15 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/products', 'ProductsController.index')
-Route.get('/products/:id','ProductsController.show')
-Route.put('/products/:id','ProductsController.update')
-Route.post('/products', 'ProductsController.store')
-Route.delete('/products/:id', 'ProductsController.destroy')
+
+Route.group(() => {
+  Route.post('/auth/register', 'AuthController.register')
+  Route.post('/auth/login', 'AuthController.login')
+  
+  Route.get('/products/:id','ProductsController.show')
+  Route.put('/products/:id','ProductsController.update')
+  Route.delete('/products/:id', 'ProductsController.destroy')
+  
+  Route.get('/products', 'ProductsController.index').middleware('auth')
+  Route.post('/products', 'ProductsController.store')
+}).prefix('/api')

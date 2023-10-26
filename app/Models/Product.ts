@@ -52,8 +52,11 @@ export default class Product extends BaseModel {
 
   static search () {
     return [
-      // Product.$getColumn('name')
       'name'
     ]
+  }
+
+  static getId () {
+    return 'id'
   }
 }
