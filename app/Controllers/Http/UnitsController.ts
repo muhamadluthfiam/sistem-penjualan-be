@@ -34,7 +34,7 @@ export default class UnitsController {
     try {
       const relations = ['category', 'unit', 'brand'];
       const id = params.id
-      const data = await UnitRepository.findById(id, relations)
+      const data = await UnitRepository.findId(id)
       return response.status(201).json({
         data
       })
@@ -65,7 +65,7 @@ export default class UnitsController {
     try {
       const id = params.id
       const data = await UnitRepository.destroy(id)
-      return response.status(2001).json({
+      return response.status(200).json({
         data
       })
     } catch (error) {

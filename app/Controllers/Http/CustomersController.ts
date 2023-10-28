@@ -34,7 +34,7 @@ export default class CustomersController {
     try {
       const relations = ['category', 'unit', 'brand'];
       const id = params.id
-      const data = await CustomerRepository.findById(id, relations)
+      const data = await CustomerRepository.findId(id)
       return response.status(201).json({
         data
       })
@@ -50,7 +50,7 @@ export default class CustomersController {
       const id = params.id
       const payload = request.all()
       const data = await CustomerRepository.store(payload, id)
-      return response.status(201).json({
+      return response.status(200).json({
         data
       })
       
@@ -65,7 +65,7 @@ export default class CustomersController {
     try {
       const id = params.id
       const data = await CustomerRepository.destroy(id)
-      return response.status(2001).json({
+      return response.status(200).json({
         data
       })
     } catch (error) {

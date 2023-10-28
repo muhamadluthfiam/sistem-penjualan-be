@@ -31,12 +31,8 @@ class BaseRepository {
     return query.paginate(page, perPage)
   }
 
-  public async findId(payload, relations: string[]) {
+  public async findId(payload) {
     const query = this.model.query()
-    relations.forEach(relation => {
-      query.preload(relation);
-    });
-
     return query.where(this.model.primaryKey, payload)
   }
 
@@ -61,9 +57,9 @@ class BaseRepository {
     }
   }
 
-  public async findById (id, relations: string[]) {
+  public async findById (id) {
     try {
-      const data = await this.findId(id, relations)
+      const data = await this.findId(id)
       return data
     } catch (e) {
       throw new Exception(e.message)

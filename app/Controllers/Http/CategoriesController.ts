@@ -34,7 +34,7 @@ export default class CategoriesController {
     try {
       const relations = ['category', 'unit', 'brand'];
       const id = params.id
-      const data = await CategoryRepository.findById(id, relations)
+      const data = await CategoryRepository.findId(id)
       return response.status(201).json({
         data
       })
