@@ -7,6 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('product_id').unsigned().references('id').inTable('products')
+      table.integer('sale_transaction_id').unsigned().references('id').inTable('sale_transactions')
       table.integer('quantity')
       table.integer('sale_price')
       /**
