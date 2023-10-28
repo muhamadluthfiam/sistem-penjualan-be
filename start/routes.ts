@@ -61,6 +61,12 @@ Route.group(() => {
   Route.put('/category/:id','CategoriesController.update')
   Route.delete('/category/:id', 'CategoriesController.destroy')
   Route.post('/category', 'CategoriesController.store')
+  
+  Route.get('/sale-transaction', 'SaleTransactionController.index')
+  Route.get('/sale-transaction/:id','SaleTransactionController.show')
+  Route.put('/sale-transaction/:id','SaleTransactionController.update')
+  Route.delete('/sale-transaction/:id', 'SaleTransactionController.destroy')
+  Route.post('/sale-transaction', 'SaleTransactionController.store')
 
 
 
