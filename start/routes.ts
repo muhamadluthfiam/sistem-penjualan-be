@@ -68,6 +68,12 @@ Route.group(() => {
   Route.delete('/sale-transaction/:id', 'SaleTransactionController.destroy')
   Route.post('/sale-transaction', 'SaleTransactionController.store')
 
+  Route.get('/detail-sale-transaction', 'DetailSalesController.index')
+  Route.get('/detail-sale-transaction/:id','DetailSalesController.show')
+  Route.put('/detail-sale-transaction/:id','DetailSalesController.update')
+  Route.delete('/detail-sale-transaction/:id', 'DetailSalesController.destroy')
+  Route.post('/detail-sale-transaction', 'DetailSalesController.store')
+  
 
 
 }).prefix('/api').middleware('auth')

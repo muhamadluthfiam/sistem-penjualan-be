@@ -5,7 +5,9 @@ export default class SaleTransactionController {
   public async index({ request, response }: HttpContextContract) {
     try {
       const payload = request.all()
-      const data = await SalesTransactionRepository.index(payload)
+      const relations = ['customers']
+      const data = await SalesTransactionRepository.index(payload, relations)
+      console.log(data)
       return response.status(200).json({
         data
       })
@@ -32,9 +34,9 @@ export default class SaleTransactionController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const relations = ['category', 'unit', 'brand'];
+      const relations = ['customers'];
       const id = params.id
-      const data = await SalesTransactionRepository.findId(id)
+      const data = await SalesTransactionRepository.findById(id, relations)
       return response.status(201).json({
         data
       })

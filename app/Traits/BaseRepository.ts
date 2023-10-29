@@ -41,14 +41,14 @@ class BaseRepository {
     try {
       if (payload) {
         let data = this.model.query()
-        const search = payload.s
-        const modelSearch = await this.search()
-        if (search) {
-          modelSearch.forEach((model) => {
-            data.where(model, search)
-          })
-          return data
-        }
+        // const search = payload.s
+        // const modelSearch = await this.search()
+        // if (search) {
+        //   modelSearch.forEach((model) => {
+        //     data.where(model, search)
+        //   })
+        //   return data
+        // }
         data = relations ? await this.paginate(payload, relations) : await this.paginateNotRelations(payload)
         return data
       }
@@ -57,10 +57,13 @@ class BaseRepository {
     }
   }
 
-  public async findById (id) {
-    try {
-      const data = await this.findId(id)
-      return data
+  public async findById (id, relations: string[]) {
+    try {      
+      const query = this.model.query()
+      relations.forEach(relation => {
+        query.preload(relation)
+      })
+      return query
     } catch (e) {
       throw new Exception(e.message)
     }

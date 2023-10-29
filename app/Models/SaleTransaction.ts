@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, HasOne, belongsTo, column, hasOne, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
-import Customer from './Customer';
+import Customer from 'App/Models/Customer';
 import DetailSaleTransaction from './DetailSaleTransaction';
 
 export default class SaleTransaction extends BaseModel {
@@ -13,9 +13,7 @@ export default class SaleTransaction extends BaseModel {
   @column()
   public invoice: string
 
-  @column.date({
-    serialize: (value) => value.toFormat('dd-LL-yyyy')
-  })
+  @column.date()
   public date: DateTime;
 
   @column.dateTime({ autoCreate: true })
@@ -24,8 +22,8 @@ export default class SaleTransaction extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @hasOne(() => Customer, { foreignKey: 'customer_id' })
-  public customer: HasOne<typeof Customer>
+  @hasOne(() => Customer, { foreignKey: 'id' })
+  public customers: HasOne<typeof Customer>
 
   @belongsTo(() => DetailSaleTransaction, { foreignKey: 'id' })
   public detailSaleTransaction: BelongsTo<typeof DetailSaleTransaction>

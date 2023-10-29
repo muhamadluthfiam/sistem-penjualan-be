@@ -24,9 +24,6 @@ export default class Customer extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @belongsTo(() => SaleTransaction, { foreignKey: 'id' })
-  public saleTransaction: BelongsTo<typeof SaleTransaction>
-
   static search () {
     return [
       'name'

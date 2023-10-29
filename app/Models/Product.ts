@@ -3,6 +3,7 @@ import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Category from './Category'
 import Unit from './Unit'
 import Brand from './Brand'
+import DetailSaleTransaction from './DetailSaleTransaction'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -49,6 +50,9 @@ export default class Product extends BaseModel {
 
   @belongsTo(() => Brand)
   public brand: BelongsTo<typeof Brand>
+  
+  @belongsTo(() => DetailSaleTransaction)
+  public sale: BelongsTo<typeof DetailSaleTransaction>
 
   static search () {
     return [
