@@ -1,5 +1,6 @@
+// SaleTransaction Model
 import { DateTime } from 'luxon'
-import { BaseModel, HasOne, belongsTo, column, hasOne, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, HasMany, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Customer from 'App/Models/Customer';
 import DetailSaleTransaction from './DetailSaleTransaction';
 
@@ -22,9 +23,9 @@ export default class SaleTransaction extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @hasOne(() => Customer, { foreignKey: 'id' })
-  public customers: HasOne<typeof Customer>
+  @hasMany(() => Customer, { foreignKey: 'id' })
+  public customers: HasMany<typeof Customer>
 
-  @belongsTo(() => DetailSaleTransaction, { foreignKey: 'sale_transaction_id' })
-  public detailSaleTransaction: BelongsTo<typeof DetailSaleTransaction>
+  @hasMany(() => DetailSaleTransaction, { foreignKey: 'sale_transaction_id' })
+  public detailSaleTransactions: HasMany<typeof DetailSaleTransaction>
 }

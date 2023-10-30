@@ -62,7 +62,7 @@ class BaseRepository {
       const query = this.model.query()
       if (!relations.length) {
         relations.forEach(relation => {
-          query.preload(relation).where('id', id)
+          query.preload(relation).where('sale_transactions_id', id)
         })
       }
       return query

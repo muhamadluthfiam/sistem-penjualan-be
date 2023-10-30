@@ -42,7 +42,7 @@ class DetailSaleTransactionRepository extends BaseRepository {
     try {      
       const query = this.model.query()
       relations.forEach(relation => {
-        query.preload(relation).where('id', id)
+        query.preload(relation).where('sale_transaction_id', id)
       })
       return query
     } catch (error) {
