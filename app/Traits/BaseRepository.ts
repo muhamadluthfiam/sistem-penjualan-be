@@ -33,7 +33,7 @@ class BaseRepository {
 
   public async findId(payload) {
     const query = this.model.query()
-    return query.where(this.model.primaryKey, payload)
+    return query.where('id', payload).first()
   }
 
 
@@ -60,9 +60,11 @@ class BaseRepository {
   public async findById (id, relations: string[]) {
     try {      
       const query = this.model.query()
-      relations.forEach(relation => {
-        query.preload(relation)
-      })
+      if (!relations.length) {
+        relations.forEach(relation => {
+          query.preload(relation).where('id', id)
+        })
+      }
       return query
     } catch (e) {
       throw new Exception(e.message)

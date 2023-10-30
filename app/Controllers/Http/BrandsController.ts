@@ -35,7 +35,7 @@ export default class BrandsController {
     try {
       const relations = ['category', 'unit', 'brand'];
       const id = params.id
-      const data = await BrandRepository.findById(id, relations)
+      const data = await BrandRepository.findId(id)
       return response.status(201).json({
         data
       })

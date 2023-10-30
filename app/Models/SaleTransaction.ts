@@ -25,6 +25,6 @@ export default class SaleTransaction extends BaseModel {
   @hasOne(() => Customer, { foreignKey: 'id' })
   public customers: HasOne<typeof Customer>
 
-  @belongsTo(() => DetailSaleTransaction, { foreignKey: 'id' })
+  @belongsTo(() => DetailSaleTransaction, { foreignKey: 'sale_transaction_id' })
   public detailSaleTransaction: BelongsTo<typeof DetailSaleTransaction>
 }

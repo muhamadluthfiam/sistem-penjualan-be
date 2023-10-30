@@ -43,7 +43,7 @@ export default Factory.define(CustomersFactory, ({ faker }) => {
     "Jl. Lengkong No. 16, Bandung",
     "Jl. Ir. H. Djuanda No. 31, Bandung",
     "Jl. Sunda No. 92, Bandung",
-    "Jl. Jakarta No. 5generatePhoneNumber()Bandung",
+    "Jl. Jakarta No. 5 Bandung",
     "Jl. Pungkur No. 7, Bandung",
     "Jl. Gegerkalong No. 37, Bandung"
   ]

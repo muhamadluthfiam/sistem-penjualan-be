@@ -32,7 +32,7 @@ export default class CategoriesController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const relations = ['category', 'unit', 'brand'];
+      const relations = [];
       const id = params.id
       const data = await CategoryRepository.findId(id)
       return response.status(201).json({

@@ -37,6 +37,18 @@ class DetailSaleTransactionRepository extends BaseRepository {
       throw error;
     }
   }
+
+  public async findByIdDetail (id, relations: string[]) {
+    try {      
+      const query = this.model.query()
+      relations.forEach(relation => {
+        query.preload(relation).where('id', id)
+      })
+      return query
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 

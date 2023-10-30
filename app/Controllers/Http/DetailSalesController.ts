@@ -35,7 +35,7 @@ export default class DetailSalesController {
     try {
       const relations = ['product', 'sale', 'customers'];
       const id = params.id
-      const data = await DetailSaleTransactionRepository.findById(id, relations)
+      const data = await DetailSaleTransactionRepository.findByIdDetail(id, relations)
       return response.status(201).json({
         data
       })

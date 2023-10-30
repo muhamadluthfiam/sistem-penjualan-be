@@ -51,7 +51,7 @@ export default class Product extends BaseModel {
   @belongsTo(() => Brand)
   public brand: BelongsTo<typeof Brand>
   
-  @belongsTo(() => DetailSaleTransaction)
+  @belongsTo(() => DetailSaleTransaction, { foreignKey: 'product_id' })
   public sale: BelongsTo<typeof DetailSaleTransaction>
 
   static search () {
