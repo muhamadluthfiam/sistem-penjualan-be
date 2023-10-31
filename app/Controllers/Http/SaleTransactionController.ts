@@ -7,7 +7,6 @@ export default class SaleTransactionController {
       const payload = request.all()
       const relations = ['customers']
       const data = await SalesTransactionRepository.index(payload, relations)
-      console.log(data)
       return response.status(200).json({
         data
       })

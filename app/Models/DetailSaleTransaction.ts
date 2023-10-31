@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, belongsTo, BelongsTo, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import Product from './Product'
 import SaleTransaction from './SaleTransaction'
 import Unit from './Unit'
@@ -28,9 +28,10 @@ export default class DetailSaleTransaction extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
+
   @belongsTo(() => Product, { foreignKey: 'product_id' })
   public product: BelongsTo<typeof Product>
-
+  
   @belongsTo(() => SaleTransaction, { foreignKey: 'sale_transaction_id' })
   public saleTransaction: BelongsTo<typeof SaleTransaction>
   
@@ -42,4 +43,7 @@ export default class DetailSaleTransaction extends BaseModel {
   
   @belongsTo(() => Brand, { foreignKey: 'product_id' })
   public brand: BelongsTo<typeof Brand>
+
 }
+
+

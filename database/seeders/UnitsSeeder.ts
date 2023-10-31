@@ -7,7 +7,8 @@ export default class extends BaseSeeder {
     await Unit.createMany([
       { name: "pcs" },
       { name: "pack" },
-      { name: "box" }
+      { name: "box" },
+      { name: "set" }
     ])
   }
 }

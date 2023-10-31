@@ -74,6 +74,24 @@ Route.group(() => {
   Route.delete('/detail-sale-transaction/:id', 'DetailSalesController.destroy')
   Route.post('/detail-sale-transaction', 'DetailSalesController.store')
   
+  Route.get('/purchase-transaction', 'PurchaseTransactionsController.index')
+  Route.get('/purchase-transaction/:id','PurchaseTransactionsController.show')
+  Route.put('/purchase-transaction/:id','PurchaseTransactionsController.update')
+  Route.delete('/purchase-transaction/:id', 'PurchaseTransactionsController.destroy')
+  Route.post('/purchase-transaction', 'PurchaseTransactionsController.store')
+
+  Route.get('/detail-purchase-transaction', 'DetailPurchasesController.index')
+  Route.get('/detail-purchase-transaction/:id','DetailPurchasesController.show')
+  Route.put('/detail-purchase-transaction/:id','DetailPurchasesController.update')
+  Route.delete('/detail-purchase-transaction/:id', 'DetailPurchasesController.destroy')
+  Route.post('/detail-purchase-transaction', 'DetailPurchasesController.store')
+
+  Route.get('/permissions', 'PermisssionsController.index')
+  Route.get('/permissions/:id','PermisssionsController.show')
+  Route.put('/permissions/:id','PermisssionsController.update')
+  Route.delete('/permissions/:id', 'PermisssionsController.destroy')
+  Route.post('/permissions', 'PermisssionsController.store')
+  
 
 
 }).prefix('/api').middleware('auth')

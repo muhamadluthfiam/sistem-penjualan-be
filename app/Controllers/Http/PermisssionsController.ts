@@ -1,13 +1,12 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import ProductRepository from 'App/Repository/ProductRepository'
+import PermissionsRepository from 'App/Repository/PermissionsRepository'
 
-
-export default class ProductsController {
+export default class PermisssionsController {
   public async index({ request, response }: HttpContextContract) {
     try {
       const payload = request.all()
-      const relations = ['category', 'unit', 'brand'];
-      const data = await ProductRepository.index(payload, relations)
+      const relations = ['customers']
+      const data = await PermissionsRepository.index(payload)
       return response.status(200).json({
         data
       })
@@ -18,11 +17,10 @@ export default class ProductsController {
     }
   }
 
-
   public async store({ request, response }: HttpContextContract) {
     try {
       const payload = request.all()
-      const data = await ProductRepository.store(payload)
+      const data = await PermissionsRepository.store(payload)
       return response.status(201).json({
         data
       })
@@ -35,10 +33,10 @@ export default class ProductsController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const relations = ['category', 'unit', 'brand'];
+      const relations = ['customers'];
       const id = params.id
-      const data = await ProductRepository.findByIdProduct(id, relations)
-      return response.status(200).json({
+      const data = await PermissionsRepository.findId(id)
+      return response.status(201).json({
         data
       })
     } catch (error) {
@@ -52,7 +50,7 @@ export default class ProductsController {
     try {
       const id = params.id
       const payload = request.all()
-      const data = await ProductRepository.store(payload, id)
+      const data = await PermissionsRepository.store(payload, id)
       return response.status(201).json({
         data
       })
@@ -67,8 +65,8 @@ export default class ProductsController {
   public async destroy({ params, response }: HttpContextContract) {
     try {
       const id = params.id
-      const data = await ProductRepository.destroy(id)
-      return response.status(201).json({
+      const data = await PermissionsRepository.destroy(id)
+      return response.status(200).json({
         data
       })
     } catch (error) {

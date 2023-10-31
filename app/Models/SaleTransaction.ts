@@ -25,7 +25,4 @@ export default class SaleTransaction extends BaseModel {
 
   @hasMany(() => Customer, { foreignKey: 'id' })
   public customers: HasMany<typeof Customer>
-
-  @hasMany(() => DetailSaleTransaction, { foreignKey: 'sale_transaction_id' })
-  public detailSaleTransactions: HasMany<typeof DetailSaleTransaction>
 }

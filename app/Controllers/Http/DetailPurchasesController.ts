@@ -1,12 +1,11 @@
-
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import DetailSaleTransactionRepository from 'App/Repository/DetailSaleTransactionRepository'
+import DetailPurchaseTransactionRepository from 'App/Repository/DetailPurchaseTransactionRepository'
 
-export default class DetailSalesController {
+export default class DetailPurchasesController {
   public async index({ request, response }: HttpContextContract) {
     try {
       const payload = request.all()
-      const data = await DetailSaleTransactionRepository.index(payload)
+      const data = await DetailPurchaseTransactionRepository.index(payload)
       return response.status(200).json({
         data
       })
@@ -19,8 +18,8 @@ export default class DetailSalesController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const { sale_transaction_id, product } = request.all()
-      const data = await DetailSaleTransactionRepository.storeTrx(sale_transaction_id, product)
+      const { purchase_transaction_id, product } = request.all()
+      const data = await DetailPurchaseTransactionRepository.storeTrx(purchase_transaction_id, product)
       return response.status(200).json({
         data
       })
@@ -33,9 +32,9 @@ export default class DetailSalesController {
 
   public async show({ params, response }: HttpContextContract) {
     try {
-      const relations = ['product', 'saleTransaction', 'unit', 'brand', 'customer'];
+      const relations = ['product', 'saleTransaction', 'unit', 'brand', 'supplier'];
       const id = params.id
-      const data = await DetailSaleTransactionRepository.findByIdDetail(id, relations)
+      const data = await DetailPurchaseTransactionRepository.findByIdDetail(id, relations)
 
       const responseObj = {};
 
@@ -44,10 +43,10 @@ export default class DetailSalesController {
 
         if (!responseObj[invoice]) {
           responseObj[invoice] = {
-            customer: {
-              name: item.customer.name,
-              address: item.customer.address,
-              phone: item.customer.phone
+            supplier: {
+              name: item.supplier.name,
+              address: item.supplier.address,
+              phone: item.supplier.phone
             },
             invoice: {
               name: item.saleTransaction.invoice,
@@ -83,7 +82,7 @@ export default class DetailSalesController {
     try {
       const id = params.id
       const payload = request.all()
-      const data = await DetailSaleTransactionRepository.store(payload, id)
+      const data = await DetailPurchaseTransactionRepository.store(payload, id)
       return response.status(201).json({
         data
       })
@@ -98,7 +97,7 @@ export default class DetailSalesController {
   public async destroy({ params, response }: HttpContextContract) {
     try {
       const id = params.id
-      const data = await DetailSaleTransactionRepository.destroy(id)
+      const data = await DetailPurchaseTransactionRepository.destroy(id)
       return response.status(200).json({
         data
       })
@@ -109,3 +108,4 @@ export default class DetailSalesController {
     }
   }
 }
+

@@ -3,9 +3,9 @@ import Factory from '@ioc:Adonis/Lucid/Factory'
 
 export default Factory.define(ProductsFactory, ({ faker }) => {
   const type = [
-    'Kampas Rem Depan', 
-    'Kampas Rem Belakang', 
-    'Rantai', 
+    'Selang Bensin', 
+    'Klip Mio', 
+    'Klip Grand', 
     'Kampas Kopling', 
     'Venbelt', 
     'Piston',
@@ -28,11 +28,11 @@ export default Factory.define(ProductsFactory, ({ faker }) => {
   const profit = salePrice - prices
   return {
     //
-    categoryId: Math.floor(Math.random() * 25) + 1,
+    categoryId: Math.floor(Math.random() * 5) + 1,
     unitId: Math.floor(Math.random() * 3) + 1,
-    brandId: Math.floor(Math.random() * 17) + 1,
+    brandId: Math.floor(Math.random() * 4) + 1,
     name: types,
-    quantity: Math.floor(Math.random() * 10) + 1,
+    quantity: Math.floor(Math.random() * 100) + 1,
     purchase_price: prices, 
     sale_price: salePrice,
     profit: profit,
